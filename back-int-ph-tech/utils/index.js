@@ -34,10 +34,14 @@ function eECounterTree(data) {
 }
 
 function process2CD(dataObj) {
+    if(!dataObj) {
+        return dataObj;
+    }
+    
     if (Array.isArray(dataObj)) {
         // if array call it self to process again
         let newArrObj = [];
-        while (dataObj.length > 0) {
+        while (dataObj.length !== 0) {
             let newVal = process2CD(dataObj.pop())
             newArrObj.push(newVal);
         }
@@ -67,7 +71,7 @@ function process2CD(dataObj) {
     } else if (typeof dataObj === 'string') {
         return descendtCharByAscii(dataObj);
     }
-    
+
     return dataObj;
 }
 
